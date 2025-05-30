@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+    volumes:
+      # 로컬 이미지 경로를 Nginx 컨테이너 내부 경로에 마운트
+      - ./images:/usr/share/nginx/html/images:ro # <--- 이 부분 수정
+    depends_on:
+      - backend
+    networks:
+      - vote-app-network
+
+  backend:
+    build: ./backend
+    ports:
+      - "3000:3000"
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    depends_on:
+      - redis
+    networks:
+      - vote-app-network
+
+  redis:
+    image: "redis:latest"
+    volumes:
+      - redis_data:/data # Redis 데이터 영속성 유지
+    networks:
+      - vote-app-network
+
+volumes:
+  redis_data:
+networks:
+  vote-app-network:
+    driver: bridge
