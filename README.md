@@ -14,15 +14,24 @@
 
 ## 개발 및 실행 환경
 
-- Docker와 Docker Compose가 설치되어 있어야 합니다.
+- Docker와 Docker Compose가 설치되어 있음
 
 ---
 
 ## 사용 방법
 
-1. 저장소를 클론하거나 프로젝트 폴더로 이동합니다.
+1. git clone
+```bash
+git clone https://github.com/psh1116/vote-app.git
+```
 
-2. Docker Compose를 사용해 컨테이너를 빌드 및 실행합니다.
+2. git clone 한 경로로 이동
+```bash
+cd "clone 경로/vote-app"
+```
+
+3. 컨테이너 빌드 및 실행
 
 ```bash
 docker compose up --build
+```

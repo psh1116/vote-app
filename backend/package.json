@@ -4,7 +4,8 @@
   "description": "Simple voting app backend",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "init:redis": "node redisInit.js"
   },
   "dependencies": {
     "express": "^4.19.2",

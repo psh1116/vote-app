@@ -6,8 +6,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      # 로컬 이미지 경로를 Nginx 컨테이너 내부 경로에 마운트
-      - ./images:/usr/share/nginx/html/images:ro # <--- 이 부분 수정
+      - ./images:/usr/share/nginx/html/images:ro # 이미지 파일을 읽기 전용으로 마운트
     depends_on:
       - backend
     networks:
@@ -18,10 +17,10 @@ services:
     ports:
       - "3000:3000"
     environment:
-      REDIS_HOST: redis
-      REDIS_PORT: 6379
+      REDIS_HOST: redis # Redis 서비스 이름
+      REDIS_PORT: 6379 # Redis 기본 포트
     depends_on:
-      - redis
+      - redis # Redis 서비스가 먼저 시작되어야 함
     networks:
       - vote-app-network
 
@@ -34,6 +33,6 @@ services:
 
 volumes:
   redis_data:
-networks:
+networks: # bridge network 자동 생성 (vote-app-network)
   vote-app-network:
     driver: bridge

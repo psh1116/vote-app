@@ -25,6 +25,21 @@ p {
     font-size: 1.1em;
 }
 
+.results-button {
+    margin-bottom: 20px;
+    padding: 8px 16px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.results-button:hover {
+    background-color: #45a049;
+}
+
+
 .candidates-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
